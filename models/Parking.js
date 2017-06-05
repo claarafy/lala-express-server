@@ -4,7 +4,7 @@ const
     streetName: String,
     startCoordinates: Array,
     endCoordinates: Array,
-    timeLimit: String,
+    timeLimit: Number,
     availableTime: String,
     exceptionDay: String,
     streetCleaning: String,
