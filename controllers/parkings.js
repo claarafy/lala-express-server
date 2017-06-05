@@ -1,3 +1,4 @@
+//Parking controller
 const
   Parking = require('../models/Parking.js')
 

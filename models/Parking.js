@@ -1,3 +1,4 @@
+//Parking model
 const
   mongoose = require('mongoose'),
   parkingSchema = new mongoose.Schema({
