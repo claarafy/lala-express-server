@@ -6,6 +6,7 @@ const
   mongoose = require('mongoose'), //mongodb
   cors = require('cors'), //allowing ajax from other domains
   usersRoutes = require('./routes/users.js'),
+  parkingsRoutes = require('./routes/parkings.js'),
   mongoUrl = process.env.MONGO_URL ||'mongodb://localhost/lalastreets', //database URL
   PORT = process.env.PORT || 3001 //environment port
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 
 //user routes
 app.use('/api/users', usersRoutes)
-
+app.use('/api/parkings', parkingsRoutes)
 
 //server: listen for incoming http requests
 app.listen(PORT, (err) => {

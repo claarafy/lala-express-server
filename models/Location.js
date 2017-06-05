@@ -12,7 +12,7 @@ const
   })
   locationSchema = new.mongoose.Schema({
     name: String,
-    lngLat: Array,
+    coordinates: Array,
     parkings: [parkingSchema]
   })
 
