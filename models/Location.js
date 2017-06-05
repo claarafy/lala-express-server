@@ -1,11 +1,19 @@
 const
   mongoose = require('mongoose'),
-  streetSchema = new mongoose.Schema({
-    name: String,
+  parkingSchema = new mongoose.Schema({
+    streetName: String,
+    startingPoint: Array,
+    endingPoint: Array,
+    timeLimit: String,
+    availableTime: String,
+    exceptionDay: String,
+    streetCleaning: String,
+    permit: Boolean,
   })
   locationSchema = new.mongoose.Schema({
     name: String,
-    streets: [streetSchema]
+    lngLat: Array,
+    parkings: [parkingSchema]
   })
 
 module.exports = mongoose.model('Location', locationSchema)

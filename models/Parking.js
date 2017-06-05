@@ -1,12 +1,15 @@
 const
   mongoose = require('mongoose'),
   parkingSchema = new mongoose.Schema({
+    streetName: String,
+    startLngLat: Array,
+    endLngLat: Array,
     timeLimit: String,
     availableTime: String,
     exceptionDay: String,
     streetCleaning: String,
     permit: Boolean,
-    street: [{type: mongoose,SchemaTyes.ObjectID, ref: 'Street'}]
+    Location: [{type: mongoose,SchemaTyes.ObjectID, ref: 'Location'}]
   })
 
 module.exports = mongoose.model('Parking', parkingSchema)
