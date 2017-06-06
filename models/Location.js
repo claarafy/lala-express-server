@@ -1,7 +1,7 @@
 const
   mongoose = require('mongoose'),
 
-  locationSchema = new.mongoose.Schema({
+  locationSchema = new mongoose.Schema({
     name: String,
     coordinates: Array,
     parkings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Parking'}]

@@ -7,7 +7,7 @@ const
 
 parkingsRouter.route('/')
   .get(parkingsController.index)
-  .post(parkingsController.create)
+  // .post(parkingsController.create)
 
 parkingsRouter.route('/:id')
   .get(parkingsController.show)
