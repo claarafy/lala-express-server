@@ -1,7 +1,8 @@
 //Location controller
 const
   Location = require('../models/Location.js'),
-  Parking = require('../models/Parking.js')
+  Parking = require('../models/Parking.js'),
+  geocoder = require('geocoder')
 
 module.exports = {
   index: (req, res) => {
