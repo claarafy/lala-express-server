@@ -5,14 +5,16 @@ const
 
 module.exports = {
   index: (req, res) => {
+  Location.findById(req.params.locationId, (err, location) => {
     Parking.find({}, (err, parkings) => {
       if(err) return err
       res.json(parkings)
     })
+  })
   },
 
   show: (req, res) => {
-    Parking.findById(req.params.id, (err,parking) => {
+    Parking.findById(req.params.parkingId, (err,parking) => {
       if(err) return err
       res.json(parking)
     })
@@ -44,9 +46,14 @@ module.exports = {
 
   destroy: (req, res) => {
     Location.findById(req.params.locationId, (err, location) => {
-      const parkingToDelete = Parking.findByIdAndRemove(req.params.parkingId, (err, parking) => {
-        if(err) return err
-        res.json({success:true, message: "Parking sign deleted."})
+      Parking.findByIdAndRemove(req.params.parkingId, (err, parking) => {
+        var deleteIndex = location.parkings.indexOf(req.params.parkingId)
+        console.log(deleteIndex)
+        location.parkings.splice(deleteIndex, 1)
+        location.save((err,location) => {
+          if(err) return err
+          res.json({success:true, message: "Parking sign deleted from location and parking."})
+        })
       })
     })
   }

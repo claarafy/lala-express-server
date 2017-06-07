@@ -7,9 +7,9 @@ const
     endCoordinates: Array,
     timeLimit: Number,
     availableTime: String,
-    exceptionDay: String,
+    meterParking: Boolean,
     streetCleaning: String,
-    permit: Boolean,
+    noParking: Boolean,
 
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     location: {type: mongoose.Schema.Types.ObjectId, ref: 'Location'}

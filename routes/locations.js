@@ -19,8 +19,10 @@ locationsRouter.route('/:locationId')
 /////////////////////////////locations' parking routes
 locationsRouter.route('/:locationId/parkings')
   .post(parkingsController.create)
+  .get(parkingsController.index)
 
 locationsRouter.route('/:locationId/parkings/:parkingId')
+  .get(parkingsController.show)
   .patch(parkingsController.update)
   .delete(parkingsController.destroy)
 
