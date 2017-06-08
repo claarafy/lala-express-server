@@ -25,7 +25,6 @@ module.exports = {
     Location.findOne({name: req.body.name}, (err, location) => {
       if(location) {
         console.log("this location already exists in the data")
-        // location = location
         return res.json({success: true, message: "this location already exists in the data", location})
       } else {
         console.log("create else reached")
@@ -44,7 +43,6 @@ module.exports = {
           })
         })
       }
-      // res.json({success: true, message:"New location created.", location})
     })
 
   },
