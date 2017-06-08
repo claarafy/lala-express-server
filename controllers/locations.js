@@ -21,19 +21,32 @@ module.exports = {
 
   create: (req, res) => {
     console.log("from server, logging the request", req.body.name, req.body.coordinates) //req.body.name= city name or address
-    geocoder.geocode(req.body.name, (err, convertedAddress) => {
-      console.log(convertedAddress.results[0].geometry.location)
-      req.body.coordinates.push(convertedAddress.results[0].geometry.location.lng)
-      req.body.coordinates.push(convertedAddress.results[0].geometry.location.lat)
+    var location
+    Location.findOne({name: req.body.name}, (err, location) => {
+      if(location) {
+        console.log("this location already exists in the data")
+        // location = location
+        return res.json({success: true, message: "this location already exists in the data", location})
+      } else {
+        console.log("create else reached")
+        geocoder.geocode(req.body.name, (err, convertedAddress) => {
+          console.log(convertedAddress.results[0].geometry.location)
+          req.body.coordinates.push(convertedAddress.results[0].geometry.location.lng)
+          req.body.coordinates.push(convertedAddress.results[0].geometry.location.lat)
 
-      const completeLocation = req.body
-      
-      Location.create(completeLocation, (err, location) => {
-        if(err) return err
-        console.log("complete location is", location)
-        res.json({success: true, message:"New location created.", location})
-      })
+          const completeLocation = req.body
+
+          Location.create(completeLocation, (err, location) => {
+            if(err) return err
+            console.log("complete location is", location)
+            // location = location
+            return res.json({success: true, message:"New location created.", location})
+          })
+        })
+      }
+      // res.json({success: true, message:"New location created.", location})
     })
+
   },
 
   update: (req, res) => {
@@ -42,7 +55,7 @@ module.exports = {
       Object.assign(location, req.body)
       location.save((err) => {
         res.json({success:true, message:"Location updated", location: location})
-      })f
+      })
     })
   },
 
