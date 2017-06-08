@@ -8,7 +8,7 @@ const
   usersRoutes = require('./routes/users.js'),
   parkingsRoutes = require('./routes/parkings.js'),
   locationsRoutes = require('./routes/locations.js'),
-  mongoUrl = process.env.MONGO_URL ||'mongodb://localhost/lalastreets', //database URL
+  mongoUrl = process.env.MONGO_URL ||'mongodb://localhost/lala-park', //database URL
   PORT = process.env.PORT || 3001 //environment port
 
 
