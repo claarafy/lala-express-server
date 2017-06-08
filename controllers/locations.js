@@ -13,7 +13,7 @@ module.exports = {
   },
 
   show: (req, res) => {
-    Location.findById(req.params.locationId, (err, location) => {
+    Location.findById(req.params.locationId).populate('parkings').exec((err, location) => {
       if(err) return err
       res.json(location)
     })
