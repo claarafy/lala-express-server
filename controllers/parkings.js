@@ -27,8 +27,8 @@ module.exports = {
       newParking.save((err, parking) => {
         location.parkings.push(parking)
         location.save((err, location) => {
-          Location.populate(location, {path:'parkings'}, (err, location) => {
-            res.json({succes:true, message:"New parking sign created.", location: location})
+          Location.populate(location, {path:'parkings'}, (err, parking) => {
+            res.json({succes:true, message:"New parking sign created.", parking})
           })
         })
       })
