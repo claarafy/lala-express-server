@@ -23,6 +23,7 @@ module.exports = {
     console.log("from server, logging the request", req.body.name, req.body.coordinates) //req.body.name= city name or address
     var location
     Location.findOne({name: req.body.name}, (err, location) => {
+      console.log("lower cased location", location.name);
       if(location) {
         console.log("this location already exists in the data")
         return res.json({success: true, message: "this location already exists in the data", location})
